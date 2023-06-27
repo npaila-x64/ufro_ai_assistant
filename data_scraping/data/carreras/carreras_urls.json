@@ -1,0 +1,229 @@
+[
+    {
+        "titulo_facultad": "Facultad de Ciencias Agropecuarias y Medioambiente",
+        "carreras": [
+            {
+                "titulo_carrera": "Agronomía  ",
+                "url": "https://admision.ufro.cl/agronomia/"
+            },
+            {
+                "titulo_carrera": "Biotecnología  ",
+                "url": "https://admision.ufro.cl/biotecnologia/"
+            },
+            {
+                "titulo_carrera": "Ingeniería en Recursos Naturales  ",
+                "url": "https://admision.ufro.cl/ingenieria-en-recursos-naturales/"
+            },
+            {
+                "titulo_carrera": "Medicina Veterinaria  ",
+                "url": "https://admision.ufro.cl/medicina-veterinaria/"
+            }
+        ]
+    },
+    {
+        "titulo_facultad": "Facultad de Ingeniería y Ciencias",
+        "carreras": [
+            {
+                "titulo_carrera": "Ingeniería Civil Industrial  ",
+                "url": "https://admision.ufro.cl/ingenieria-civil-industrial/"
+            },
+            {
+                "titulo_carrera": "Ingeniería Civil  ",
+                "url": "https://admision.ufro.cl/ingenieria-civil/"
+            },
+            {
+                "titulo_carrera": "Ingeniería Civil Química  ",
+                "url": "https://admision.ufro.cl/ingenieria-civil-quimica/"
+            },
+            {
+                "titulo_carrera": "Ingeniería Civil Física  ",
+                "url": "https://admision.ufro.cl/ingenieria-civil-fisica/"
+            },
+            {
+                "titulo_carrera": "Plan Común de Ingeniería Civil  ",
+                "url": "https://admision.ufro.cl/plan-comun-ingenieria-civil/"
+            },
+            {
+                "titulo_carrera": "Ingeniería Civil Mecánica  ",
+                "url": "https://admision.ufro.cl/ingenieria-civil-mecanica/"
+            },
+            {
+                "titulo_carrera": "Ingeniería Civil Ambiental  ",
+                "url": "https://admision.ufro.cl/ingenieria-civil-ambiental/"
+            },
+            {
+                "titulo_carrera": "Ingeniería Civil Eléctrica  ",
+                "url": "https://admision.ufro.cl/ingenieria-civil-electrica/"
+            },
+            {
+                "titulo_carrera": "Ingeniería Civil Electrónica  ",
+                "url": "https://admision.ufro.cl/ingenieria-civil-electronica/"
+            },
+            {
+                "titulo_carrera": "Ingeniería Civil Informática  ",
+                "url": "https://admision.ufro.cl/ingenieria-civil-informatica/"
+            },
+            {
+                "titulo_carrera": "Ingeniería Civil Matemática  ",
+                "url": "https://admision.ufro.cl/ingenieria-civil-matematica/"
+            },
+            {
+                "titulo_carrera": "Ingeniería Civil Telemática  ",
+                "url": "https://admision.ufro.cl/ingenieria-civil-telematica/"
+            },
+            {
+                "titulo_carrera": "Ingeniería Civil en Biotecnología  ",
+                "url": "https://admision.ufro.cl/ingenieria-civil-en-biotecnologia/"
+            },
+            {
+                "titulo_carrera": "Ingeniería en Construcción  ",
+                "url": "https://admision.ufro.cl/ingenieria-en-construccion/"
+            },
+            {
+                "titulo_carrera": "Ingeniería Informática  ",
+                "url": "https://admision.ufro.cl/ingenieria-informatica/"
+            },
+            {
+                "titulo_carrera": "Bioquímica  ",
+                "url": "https://admision.ufro.cl/bioquimica/"
+            }
+        ]
+    },
+    {
+        "titulo_facultad": "Facultad de Educación, Ciencias Sociales y Humanidades",
+        "carreras": [
+            {
+                "titulo_carrera": "Pedagogía en Educación Diferencial ¡Nueva carrera!  ",
+                "url": "https://admision.ufro.cl/pedagogia-en-educacion-diferencial/"
+            },
+            {
+                "titulo_carrera": "Bachillerato en Ciencias Sociales  ",
+                "url": "https://admision.ufro.cl/bachillerato-en-ciencias-sociales/"
+            },
+            {
+                "titulo_carrera": "Pedagogía en Inglés  ",
+                "url": "https://admision.ufro.cl/pedagogia-en-ingles/"
+            },
+            {
+                "titulo_carrera": "Periodismo  ",
+                "url": "https://admision.ufro.cl/periodismo/"
+            },
+            {
+                "titulo_carrera": "Psicología  ",
+                "url": "https://admision.ufro.cl/psicologia/"
+            },
+            {
+                "titulo_carrera": "Sociología  ",
+                "url": "https://admision.ufro.cl/sociologia/"
+            },
+            {
+                "titulo_carrera": "Pedagogía en Castellano y Comunicación  ",
+                "url": "https://admision.ufro.cl/pedagogia-en-castellano-y-comunicacion/"
+            },
+            {
+                "titulo_carrera": "Trabajo Social  ",
+                "url": "https://admision.ufro.cl/trabajo-social/"
+            },
+            {
+                "titulo_carrera": "Pedagogía en Educación Física, Deportes y Recreación  ",
+                "url": "https://admision.ufro.cl/pedagogia-en-educacion-fisica-deportes-y-recreacion/"
+            },
+            {
+                "titulo_carrera": "Pedagogía en Historia, Geografía y Educación Cívica  ",
+                "url": "https://admision.ufro.cl/pedagogia-en-historia-geografia-y-educacion-civica/"
+            },
+            {
+                "titulo_carrera": "Pedagogía en Ciencias mención Biología, Química o Física  ",
+                "url": "https://admision.ufro.cl/pedagogia-en-ciencias/"
+            },
+            {
+                "titulo_carrera": "Pedagogía en Matemática  ",
+                "url": "https://admision.ufro.cl/pedagogia-en-matematica/"
+            }
+        ]
+    },
+    {
+        "titulo_facultad": "Facultad de Ciencias Jurídicas y Empresariales",
+        "carreras": [
+            {
+                "titulo_carrera": "Contador Público y Auditor  ",
+                "url": "https://admision.ufro.cl/contador-publico-y-auditor/"
+            },
+            {
+                "titulo_carrera": "Derecho  ",
+                "url": "https://admision.ufro.cl/derecho/"
+            },
+            {
+                "titulo_carrera": "Ingeniería Comercial  ",
+                "url": "https://admision.ufro.cl/ingenieria-comercial/"
+            }
+        ]
+    },
+    {
+        "titulo_facultad": "Facultad de Medicina",
+        "carreras": [
+            {
+                "titulo_carrera": "Enfermería  ",
+                "url": "https://admision.ufro.cl/enfermeria/"
+            },
+            {
+                "titulo_carrera": "Fonoaudiología  ",
+                "url": "https://admision.ufro.cl/fonoaudiologia/"
+            },
+            {
+                "titulo_carrera": "Kinesiología  ",
+                "url": "https://admision.ufro.cl/kinesiologia/"
+            },
+            {
+                "titulo_carrera": "Medicina  ",
+                "url": "https://admision.ufro.cl/medicina/"
+            },
+            {
+                "titulo_carrera": "Tecnología Médica  ",
+                "url": "https://admision.ufro.cl/tecnologia-medica/"
+            },
+            {
+                "titulo_carrera": "Nutrición y Dietética   ",
+                "url": "https://admision.ufro.cl/nutricion-y-dietetica/"
+            },
+            {
+                "titulo_carrera": "Obstetricia y Puericultura  ",
+                "url": "https://admision.ufro.cl/obstetricia-y-puericultura/"
+            },
+            {
+                "titulo_carrera": "Química y Farmacia  ",
+                "url": "https://admision.ufro.cl/quimica-y-farmacia/"
+            },
+            {
+                "titulo_carrera": "Terapia Ocupacional  ",
+                "url": "https://admision.ufro.cl/terapia-ocupacional/"
+            }
+        ]
+    },
+    {
+        "titulo_facultad": "Facultad de Odontología",
+        "carreras": [
+            {
+                "titulo_carrera": "Odontología  ",
+                "url": "https://admision.ufro.cl/odontologia/"
+            }
+        ]
+    },
+    {
+        "titulo_facultad": "CARRERAS TÉCNICAS",
+        "carreras": [
+            {
+                "titulo_carrera": "Técnico Guía Turismo Aventura  ",
+                "url": "https://admision.ufro.cl/carreras-tecnicas-2/tecnico-guia-turismo-aventura/"
+            },
+            {
+                "titulo_carrera": "Técnico Superior en Turismo  ",
+                "url": "https://admision.ufro.cl/carreras-tecnicas-2/tecnico-superior-en-turismo/"
+            },
+            {
+                "titulo_carrera": "Técnico Universitario en Enfermería  ",
+                "url": "https://admision.ufro.cl/carreras-tecnicas-2/tecnico-universitario-en-enfermeria/"
+            }
+        ]
+    }
+]

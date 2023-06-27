@@ -1,0 +1,32 @@
+[
+    {
+        "titulo_facultad": "FACULTAD DE CIENCIAS AGROPECUARIAS Y FORESTALES",
+        "url_info_facultad": "https://www.ufro.cl/index.php/facultad-de-ciencias-agropecuarias-y-forestales",
+        "sitio_web": "http://agrofor.ufro.cl"
+    },
+    {
+        "titulo_facultad": "FACULTAD DE CIENCIAS JURÍDICAS Y EMPRESARIALES",
+        "url_info_facultad": "https://www.ufro.cl/index.php/facultad-de-ciencias-juridicas-y-empresariales",
+        "sitio_web": "http://juridicasyempresariales.ufro.cl"
+    },
+    {
+        "titulo_facultad": "FACULTAD DE EDUCACIÓN, CS. SOCIALES Y HUMANIDADES",
+        "url_info_facultad": "https://www.ufro.cl/index.php/facultad-de-educacion,ciencias-sociales-y-humanidades",
+        "sitio_web": "http://humanidades.ufro.cl"
+    },
+    {
+        "titulo_facultad": "FACULTAD DE INGENIERÍA Y CIENCIAS",
+        "url_info_facultad": "https://www.ufro.cl/index.php/facultad-de-ingenieria-y-ciencias",
+        "sitio_web": "http://fica.ufro.cl"
+    },
+    {
+        "titulo_facultad": "FACULTAD DE ODONTOLOGÍA",
+        "url_info_facultad": "https://www.ufro.cl/index.php/facultad-de-odontologia",
+        "sitio_web": "http://odontologia.ufro.cl"
+    },
+    {
+        "titulo_facultad": "FACULTAD DE MEDICINA",
+        "url_info_facultad": "https://www.ufro.cl/index.php/facultad-de-medicina",
+        "sitio_web": "http://med.ufro.cl"
+    }
+]
