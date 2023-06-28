@@ -3,6 +3,11 @@ from pydantic import BaseModel
 import src.dummy_ai
 import src.chatgpt
 
+from gpt_index import GPTSimpleVectorIndex
+print('Loading index...')
+index = GPTSimpleVectorIndex.load_from_disk('index.json')
+print('Index was loaded')
+
 app = FastAPI()
 
 # Could be used as dashboard
@@ -17,7 +22,7 @@ class Query(BaseModel):
 # Output an AI response
 @app.post("/ai_output")
 async def query_ai_response(query: Query):
-    response = src.dummy_ai.ask(query.message)
+    response = src.chatgpt.ask(query.message, index)
     return {"data": response}
 
 # TODO log each interaction 
