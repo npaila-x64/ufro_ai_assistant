@@ -1,12 +1,15 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
-import src.dummy_ai
-import src.chatgpt
-
 from gpt_index import GPTSimpleVectorIndex
-print('Loading index...')
-index = GPTSimpleVectorIndex.load_from_disk('index.json')
-print('Index was loaded')
+from .ai_models import dummyai, openai
+from pydantic import BaseModel
+from fastapi import FastAPI
+
+IS_DUMMY = False # Change between the dummy ai model and the actual openai API
+
+index = any
+if not IS_DUMMY:
+    print('Loading index...')
+    index = GPTSimpleVectorIndex.load_from_disk('index.json')
+    print('Index was loaded')
 
 app = FastAPI()
 
@@ -22,7 +25,7 @@ class Query(BaseModel):
 # Output an AI response
 @app.post("/ai_output")
 async def query_ai_response(query: Query):
-    response = src.chatgpt.ask(query.message, index)
+    response = (dummyai if IS_DUMMY else openai).ask(query.message, index)
     return {"data": response}
 
 # TODO log each interaction 
