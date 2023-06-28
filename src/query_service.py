@@ -3,10 +3,10 @@ from .ai_models import dummyai, openai
 from pydantic import BaseModel
 from fastapi import FastAPI
 
-IS_DUMMY = False # Change between the dummy ai model and the actual openai API
+IS_AI_DUMMY = False # Change between the dummy ai model and the actual openai API
 
 index = any
-if not IS_DUMMY:
+if not IS_AI_DUMMY:
     print('Loading index...')
     index = GPTSimpleVectorIndex.load_from_disk('index.json')
     print('Index was loaded')
@@ -25,7 +25,7 @@ class Query(BaseModel):
 # Output an AI response
 @app.post("/ai_output")
 async def query_ai_response(query: Query):
-    response = (dummyai if IS_DUMMY else openai).ask(query.message, index)
+    response = (dummyai if IS_AI_DUMMY else openai).ask(query.message, index)
     return {"data": response}
 
 # TODO log each interaction 
