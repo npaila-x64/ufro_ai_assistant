@@ -58,6 +58,7 @@ const log = content => {
 
 const names = ["María", "Juan", "José", "Ana", "Carlos", "Cristina", "David", "Marta", "Francisco", "Isabel", "Luis", "Antonio", "Patricia", "Manuel", "Angela", "Rafael", "Gabriela", "Fernando", "Alejandra", "Roberto"];
 function getRandomName() {
-    let index = Math.floor(Math.random() * names.length);
-    return names[index];
+    let index = Math.floor(Math.random() * names.length)
+    let randonNumber = Math.floor(Math.random() * 100)
+    return names[index] + randonNumber
 }
