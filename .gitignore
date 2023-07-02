@@ -1,5 +1,5 @@
 node_modules
-index.json
+persist
 venv
 .env
 __pycache__
