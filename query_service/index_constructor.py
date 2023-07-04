@@ -12,7 +12,7 @@ openai.api_key = os.environ.get('OPENAI_API_KEY')
 def construct_index():
     max_tokens = 512
 
-    documents = SimpleDirectoryReader('query_service/docs').load_data()
+    documents = SimpleDirectoryReader('docs').load_data()
 
     parser = SimpleNodeParser()
 
@@ -29,7 +29,7 @@ def construct_index():
         documents, service_context=service_context
     )
 
-    index.storage_context.persist(persist_dir="query_service/persist")
+    index.storage_context.persist(persist_dir="persist")
 
     return index
 
