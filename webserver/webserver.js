@@ -15,7 +15,9 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html')
 })
 
-server.listen(9000, () => log('listening on *:9000'))
+const PORT = 20000
+
+server.listen(PORT, () => log('listening on *:' + PORT))
 
 io.on('connection', socket => {
     let codename = getRandomName()
