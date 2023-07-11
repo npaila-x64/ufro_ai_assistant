@@ -1,4 +1,11 @@
-from llama_index import SimpleDirectoryReader, VectorStoreIndex, LLMPredictor, ServiceContext
+from llama_index import (
+    SimpleDirectoryReader,
+    VectorStoreIndex,
+    ServiceContext,
+    LLMPredictor,
+    set_global_service_context
+)
+
 from llama_index.node_parser import SimpleNodeParser
 from langchain.chat_models import ChatOpenAI
 import openai
@@ -24,10 +31,10 @@ def construct_index():
     # configure service context
     service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor)
 
+    set_global_service_context(service_context)
+
     # build index
-    index = VectorStoreIndex.from_documents(
-        documents, service_context=service_context
-    )
+    index = VectorStoreIndex.from_documents(documents)
 
     index.storage_context.persist(persist_dir="persist")
 
