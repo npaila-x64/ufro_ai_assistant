@@ -12,6 +12,7 @@ from llama_index.callbacks import (
 )
 from llama_index.node_parser import SimpleNodeParser
 from langchain.chat_models import ChatOpenAI
+import yaml
 import openai
 import os
 
@@ -20,9 +21,13 @@ load_dotenv()
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 
-def construct_index():
-    max_tokens = 512
+def read_yaml(file_path):
+    with open(file_path, 'r') as f:
+        return yaml.safe_load(f)
 
+config = read_yaml('config.yaml')
+
+def construct_index():
     documents = SimpleDirectoryReader('docs').load_data()
 
     parser = SimpleNodeParser()
@@ -31,12 +36,12 @@ def construct_index():
 
     # setup callback manager to monitor token usage
     token_counter = TokenCountingHandler(
-        tokenizer=tiktoken.encoding_for_model("gpt-3.5-turbo").encode
+        tokenizer=tiktoken.encoding_for_model(config['model_name']).encode
     )
     callback_manager = CallbackManager([token_counter])
 
     # define LLM
-    llm_predictor = LLMPredictor(llm=ChatOpenAI(temperature=0.5, model_name="gpt-3.5-turbo", max_tokens=max_tokens))
+    llm_predictor = LLMPredictor(llm=ChatOpenAI(temperature=config['temperature'], model_name=config['model_name'], max_tokens=config['max_tokens']))
 
     # configure service context
     service_context = ServiceContext.from_defaults(
