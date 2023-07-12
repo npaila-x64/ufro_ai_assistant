@@ -1,20 +1,13 @@
-import tiktoken
+from utils import ServiceContextWrapper
 from llama_index import (
     SimpleDirectoryReader,
     VectorStoreIndex,
-    ServiceContext,
-    LLMPredictor,
-    set_global_service_context
-)
-from llama_index.callbacks import (
-    CallbackManager, 
-    TokenCountingHandler
 )
 from llama_index.node_parser import SimpleNodeParser
-from langchain.chat_models import ChatOpenAI
 import yaml
 import openai
 import os
+
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -28,39 +21,18 @@ def read_yaml(file_path):
 config = read_yaml('config.yaml')
 
 def construct_index():
+    service_context_wrapper = ServiceContextWrapper()
+    service_context_wrapper.load_service_context()
+
     documents = SimpleDirectoryReader('docs').load_data()
-
     parser = SimpleNodeParser()
-
     nodes = parser.get_nodes_from_documents(documents)
-
-    # setup callback manager to monitor token usage
-    token_counter = TokenCountingHandler(
-        tokenizer=tiktoken.encoding_for_model(config['model_name']).encode
-    )
-    callback_manager = CallbackManager([token_counter])
-
-    # define LLM
-    llm_predictor = LLMPredictor(llm=ChatOpenAI(temperature=config['temperature'], model_name=config['model_name'], max_tokens=config['max_tokens']))
-
-    # configure service context
-    service_context = ServiceContext.from_defaults(
-        llm_predictor=llm_predictor, 
-        callback_manager=callback_manager
-    )
-
-    # set the current service as the global service
-    # this will be the service used if not explicitly specified
-    set_global_service_context(service_context)
 
     # build index
     index = VectorStoreIndex.from_documents(documents)
 
-    print('Embedding Tokens: ', token_counter.total_embedding_token_count, '\n',
-      'LLM Prompt Tokens: ', token_counter.prompt_llm_token_count, '\n',
-      'LLM Completion Tokens: ', token_counter.completion_llm_token_count, '\n',
-      'Total LLM Token Count: ', token_counter.total_llm_token_count, '\n')
-    token_counter.reset_counts()
+    print(service_context_wrapper.get_token_usage())
+    service_context_wrapper.reset_token_counts()
 
     index.storage_context.persist(persist_dir="persist")
 

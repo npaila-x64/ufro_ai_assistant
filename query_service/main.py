@@ -1,3 +1,4 @@
+from utils import ServiceContextWrapper
 from llama_index import (
     StorageContext,
     load_index_from_storage,
@@ -11,6 +12,10 @@ IS_AI_DUMMY = False # Change between the dummy ai model and the actual openai AP
 index = any
 if not IS_AI_DUMMY:
     print('Loading index...')
+    
+    service_context_wrapper = ServiceContextWrapper()
+    service_context_wrapper.load_service_context()
+
     # rebuild storage context
     storage_context = StorageContext.from_defaults(persist_dir="persist")
 
