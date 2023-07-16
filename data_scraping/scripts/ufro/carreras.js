@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer')
 const FileSystem = require('fs')
-
-const dataFolder = 'data'
+const config = require('../config')
 
 function escribirJSON(filename, data) {
     FileSystem.writeFileSync(filename, JSON.stringify(data))
@@ -95,11 +94,11 @@ function obtenerInfo (facultades) {
 function run() {
     obtenerCarreras().then(facultades => {
         console.log('escribiendo urls a sistema')
-        escribirJSON(dataFolder + '/carreras/carreras_urls.json', facultades)
+        escribirJSON(config.ufro_data_folder + '/carreras/carreras_urls.json', facultades)
         console.log('las urls fueron almacenadas')
         obtenerInfo(facultades).then(info => {
             console.log('escribiendo datos a sistema')
-            escribirJSON(dataFolder + '/carreras/carreras_info.json', info)
+            escribirJSON(config.ufro_data_folder + '/carreras/carreras_info.json', info)
             console.log('los datos fueron almacenados')
         })
     })

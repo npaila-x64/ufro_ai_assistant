@@ -1,31 +1,27 @@
 const puppeteer = require('puppeteer')
 const FileSystem = require('fs')
-
-const dataFolder = 'data'
-
-function sleep(ms) {    
-    return new Promise(resolve => setTimeout(resolve, ms))
-}
+const config = require('../config')
 
 function escribirJSON(filename, data) {
     FileSystem.writeFileSync(filename, JSON.stringify(data))
 }
 
-function obtenerUrls () {
+function obtenerCarreras () {
     return new Promise(async (resolve, reject) => {
         try {
             const browser = await puppeteer.launch({headless: 'new'})
             const page = await browser.newPage()
 
-            await page.goto('https://pace.ufro.cl/category/noticias/')
+            await page.goto('https://www.ufro.cl/index.php/facultades-2')
 
             let script = await page.evaluate(() => {
-                let noticias = document.querySelectorAll('.awb-custom-text-color')
+                let facultades = document.querySelectorAll('.facultades')
                 let data = []
-                noticias.forEach(noticia => {
+                facultades.forEach(facultad => {
                     data.push({
-                        titulo: noticia.innerText,
-                        url: noticia.getAttribute('href')
+                        titulo_facultad: facultad.querySelector('p').innerText,
+                        url_info_facultad: 'https://www.ufro.cl' + facultad.querySelectorAll('a')[0].getAttribute('href'),
+                        sitio_web: facultad.querySelectorAll('a')[1].getAttribute('href'),
                     })
                 })
                 return data
@@ -39,7 +35,7 @@ function obtenerUrls () {
     }).catch((err) => console.error(err))
 }
 
-function obtenerNoticias(noticias) {
+function obtenerInfo (facultades) {
     return new Promise(async (resolve, reject) => {
         try {
             const browser = await puppeteer.launch({headless: 'new'})
@@ -47,20 +43,20 @@ function obtenerNoticias(noticias) {
 
             let results = []
 
-            for (let noticia of noticias) {
-                console.log(`scrapeando url [${results.length + 1}/${noticias.length}]: ${noticia.url}`)
-                await page.goto(noticia.url, {waitUntil: 'load', timeout: 90000})
+            for (let facultad of facultades) {
+                console.log(`scrapeando url: ${facultad.url_info_facultad}`)
+                await page.goto(facultad.url_info_facultad, {waitUntil: 'load', timeout: 90000})
                 let script = await page.evaluate(() => {
                     let data = {
                         url: document.URL,
-                        titulo: document.querySelector('.title-heading-center').innerText,
-                        cuerpo: document.querySelector('.fusion-content-tb').innerText
+                        titulo_facultad: document.querySelector('.page-header').innerText,
+                        info: document.querySelector('[itemprop="articleBody"]').innerText,
                     }
                     return data
                 })
                 results.push(script)
             }
-            
+
             browser.close()
             return resolve(results)
         } catch (e) {
@@ -70,13 +66,13 @@ function obtenerNoticias(noticias) {
 }
 
 function run() {
-    obtenerUrls().then(urls => {
+    obtenerCarreras().then(facultades => {
         console.log('escribiendo urls a sistema')
-        escribirJSON(dataFolder + '/pace/pace_urls.json', urls)
-        console.log('las urls fueron almacenadas')
-        obtenerNoticias(urls).then(noticias => {
+        escribirJSON(config.ufro_data_folder + '/facultades/facultades_urls.json', facultades)
+        console.log('las facultades fueron almacenadas')
+        obtenerInfo(facultades).then(info => {
             console.log('escribiendo datos a sistema')
-            escribirJSON(dataFolder + '/pace/pace_noticias.json', noticias)
+            escribirJSON(config.ufro_data_folder + '/facultades/facultades_info.json', info)
             console.log('los datos fueron almacenados')
         })
     })

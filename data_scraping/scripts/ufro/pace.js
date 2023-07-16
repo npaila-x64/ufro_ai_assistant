@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer')
 const FileSystem = require('fs')
-
-const dataFolder = 'data'
+const config = require('../config')
 
 function sleep(ms) {    
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -17,16 +16,15 @@ function obtenerUrls () {
             const browser = await puppeteer.launch({headless: 'new'})
             const page = await browser.newPage()
 
-            await page.goto('https://proenta2.ufro.cl/destacados/')
+            await page.goto('https://pace.ufro.cl/category/noticias/')
 
             let script = await page.evaluate(() => {
-                let noticias = document.querySelectorAll('.mason-item')
+                let noticias = document.querySelectorAll('.awb-custom-text-color')
                 let data = []
                 noticias.forEach(noticia => {
                     data.push({
-                        titulo: noticia.querySelector('.mega-post-title').innerText,
-                        fecha_publicacion: noticia.querySelector('.mega-post-date').innerText,
-                        url: noticia.querySelector('.mega-post-title').querySelector('a').getAttribute('href')
+                        titulo: noticia.innerText,
+                        url: noticia.getAttribute('href')
                     })
                 })
                 return data
@@ -54,8 +52,8 @@ function obtenerNoticias(noticias) {
                 let script = await page.evaluate(() => {
                     let data = {
                         url: document.URL,
-                        titulo: document.querySelector('.post-title').innerText,
-                        cuerpo: document.querySelector('.post-content').innerText
+                        titulo: document.querySelector('.title-heading-center').innerText,
+                        cuerpo: document.querySelector('.fusion-content-tb').innerText
                     }
                     return data
                 })
@@ -73,11 +71,11 @@ function obtenerNoticias(noticias) {
 function run() {
     obtenerUrls().then(urls => {
         console.log('escribiendo urls a sistema')
-        escribirJSON(dataFolder + '/proenta/proenta_urls.json', urls)
+        escribirJSON(config.ufro_data_folder + '/pace/pace_urls.json', urls)
         console.log('las urls fueron almacenadas')
         obtenerNoticias(urls).then(noticias => {
             console.log('escribiendo datos a sistema')
-            escribirJSON(dataFolder + '/proenta/proenta_noticias.json', noticias)
+            escribirJSON(config.ufro_data_folder + '/pace/pace_noticias.json', noticias)
             console.log('los datos fueron almacenados')
         })
     })

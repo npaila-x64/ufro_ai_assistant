@@ -1,28 +1,31 @@
 const puppeteer = require('puppeteer')
 const FileSystem = require('fs')
+const config = require('../config')
 
-const dataFolder = 'data'
+function sleep(ms) {    
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
 
 function escribirJSON(filename, data) {
     FileSystem.writeFileSync(filename, JSON.stringify(data))
 }
 
-function obtenerCarreras () {
+function obtenerUrls () {
     return new Promise(async (resolve, reject) => {
         try {
             const browser = await puppeteer.launch({headless: 'new'})
             const page = await browser.newPage()
 
-            await page.goto('https://www.ufro.cl/index.php/facultades-2')
+            await page.goto('https://proenta2.ufro.cl/destacados/')
 
             let script = await page.evaluate(() => {
-                let facultades = document.querySelectorAll('.facultades')
+                let noticias = document.querySelectorAll('.mason-item')
                 let data = []
-                facultades.forEach(facultad => {
+                noticias.forEach(noticia => {
                     data.push({
-                        titulo_facultad: facultad.querySelector('p').innerText,
-                        url_info_facultad: 'https://www.ufro.cl' + facultad.querySelectorAll('a')[0].getAttribute('href'),
-                        sitio_web: facultad.querySelectorAll('a')[1].getAttribute('href'),
+                        titulo: noticia.querySelector('.mega-post-title').innerText,
+                        fecha_publicacion: noticia.querySelector('.mega-post-date').innerText,
+                        url: noticia.querySelector('.mega-post-title').querySelector('a').getAttribute('href')
                     })
                 })
                 return data
@@ -36,7 +39,7 @@ function obtenerCarreras () {
     }).catch((err) => console.error(err))
 }
 
-function obtenerInfo (facultades) {
+function obtenerNoticias(noticias) {
     return new Promise(async (resolve, reject) => {
         try {
             const browser = await puppeteer.launch({headless: 'new'})
@@ -44,20 +47,20 @@ function obtenerInfo (facultades) {
 
             let results = []
 
-            for (let facultad of facultades) {
-                console.log(`scrapeando url: ${facultad.url_info_facultad}`)
-                await page.goto(facultad.url_info_facultad, {waitUntil: 'load', timeout: 90000})
+            for (let noticia of noticias) {
+                console.log(`scrapeando url [${results.length + 1}/${noticias.length}]: ${noticia.url}`)
+                await page.goto(noticia.url, {waitUntil: 'load', timeout: 90000})
                 let script = await page.evaluate(() => {
                     let data = {
                         url: document.URL,
-                        titulo_facultad: document.querySelector('.page-header').innerText,
-                        info: document.querySelector('[itemprop="articleBody"]').innerText,
+                        titulo: document.querySelector('.post-title').innerText,
+                        cuerpo: document.querySelector('.post-content').innerText
                     }
                     return data
                 })
                 results.push(script)
             }
-
+            
             browser.close()
             return resolve(results)
         } catch (e) {
@@ -67,13 +70,13 @@ function obtenerInfo (facultades) {
 }
 
 function run() {
-    obtenerCarreras().then(facultades => {
+    obtenerUrls().then(urls => {
         console.log('escribiendo urls a sistema')
-        escribirJSON(dataFolder + '/facultades/facultades_urls.json', facultades)
-        console.log('las facultades fueron almacenadas')
-        obtenerInfo(facultades).then(info => {
+        escribirJSON(config.ufro_data_folder + '/proenta/proenta_urls.json', urls)
+        console.log('las urls fueron almacenadas')
+        obtenerNoticias(urls).then(noticias => {
             console.log('escribiendo datos a sistema')
-            escribirJSON(dataFolder + '/facultades/facultades_info.json', info)
+            escribirJSON(config.ufro_data_folder + '/proenta/proenta_noticias.json', noticias)
             console.log('los datos fueron almacenados')
         })
     })

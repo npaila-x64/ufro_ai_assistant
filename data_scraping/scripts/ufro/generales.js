@@ -1,8 +1,7 @@
 const puppeteer = require('puppeteer')
 const promises = require('fs/promises')
 const FileSystem = require('fs')
-
-const dataFolder = 'data'
+const config = require('../config')
 
 function appendJSON(filename, data) {
     FileSystem.appendFileSync(filename, JSON.stringify(data)  + ",")
@@ -95,11 +94,11 @@ function obtenerNoticias(noticias) {
 function run() {
     obtenerUrls().then(urls => {
         console.log('escribiendo urls a sistema')
-        escribirJSON(dataFolder + '/generales/generales_urls.json', urls)
+        escribirJSON(config.ufro_data_folder + '/generales/generales_urls.json', urls)
         console.log('las urls fueron almacenadas')
         obtenerNoticias(urls).then(noticias => {
             console.log('escribiendo datos a sistema')
-            escribirJSON(dataFolder + '/generales/generales_noticias.json', noticias)
+            escribirJSON(config.ufro_data_folder + '/generales/generales_noticias.json', noticias)
             console.log('los datos fueron almacenados')
         })
     }).catch(console.error)

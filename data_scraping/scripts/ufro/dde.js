@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer')
 const FileSystem = require('fs')
-
-const dataFolder = 'data'
+const config = require('../config')
 
 function sleep(ms) {    
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -78,11 +77,13 @@ function obtenerNoticias(noticias) {
 function run() {
     obtenerUrls().then(urls => {
         console.log('escribiendo urls a sistema')
-        escribirJSON(dataFolder + '/dde/dde_urls.json', urls)
+        console.log('config.ufro_data_folder ' + config.ufro_data_folder)
+        console.log('urls ' + urls)
+        escribirJSON(config.ufro_data_folder + '/dde/dde_urls.json', urls)
         console.log('las urls fueron almacenadas')
         obtenerNoticias(urls).then(noticias => {
             console.log('escribiendo datos a sistema')
-            escribirJSON(dataFolder + '/dde/dde_noticias.json', noticias)
+            escribirJSON(config.ufro_data_folder + '/dde/dde_noticias.json', noticias)
             console.log('los datos fueron almacenados')
         })
     })
