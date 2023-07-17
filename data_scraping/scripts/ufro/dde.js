@@ -77,8 +77,6 @@ function obtenerNoticias(noticias) {
 function run() {
     obtenerUrls().then(urls => {
         console.log('escribiendo urls a sistema')
-        console.log('config.ufro_data_folder ' + config.ufro_data_folder)
-        console.log('urls ' + urls)
         escribirJSON(config.ufro_data_folder + '/dde/dde_urls.json', urls)
         console.log('las urls fueron almacenadas')
         obtenerNoticias(urls).then(noticias => {
