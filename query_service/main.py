@@ -17,7 +17,7 @@ if not IS_AI_DUMMY:
     service_context_wrapper.load_service_context()
 
     # rebuild storage context
-    storage_context = StorageContext.from_defaults(persist_dir="persist")
+    storage_context = StorageContext.from_defaults(persist_dir="storage")
 
     # load index
     index = load_index_from_storage(

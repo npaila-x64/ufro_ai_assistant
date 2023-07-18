@@ -24,7 +24,7 @@ def construct_index():
     service_context_wrapper = ServiceContextWrapper()
     service_context_wrapper.load_service_context()
 
-    documents = SimpleDirectoryReader('docs').load_data()
+    documents = SimpleDirectoryReader('docs/investigacion').load_data()
     parser = SimpleNodeParser()
     nodes = parser.get_nodes_from_documents(documents)
 
@@ -34,7 +34,7 @@ def construct_index():
     print(service_context_wrapper.get_token_usage())
     service_context_wrapper.reset_token_counts()
 
-    index.storage_context.persist(persist_dir="persist")
+    index.storage_context.persist(persist_dir="storage")
 
     return index
 
