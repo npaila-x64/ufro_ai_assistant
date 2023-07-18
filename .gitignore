@@ -1,6 +1,5 @@
 node_modules
 persist
-storage
 venv
 .env
 __pycache__
