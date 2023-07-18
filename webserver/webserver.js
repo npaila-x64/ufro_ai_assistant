@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/public'))
 
 // On root directory serve the main webpage
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html')
+    res.sendFile(__dirname + '/views/index.html')
 })
 
 const PORT = 20000
