@@ -1,15 +1,16 @@
 const puppeteer = require('puppeteer')
 const FileSystem = require('fs')
 const config = require('../config')
-const { readLines } = require('./readLines')
-
-function sleep(ms) {    
-    return new Promise(resolve => setTimeout(resolve, ms))
-}
 
 function escribirJSON(filename, data) {
     FileSystem.writeFileSync(filename, JSON.stringify(data))
 }
+
+let urls = [
+    'https://investigacion.ufro.cl/concurso-productividad-publicacion-de-libros/',
+    'https://investigacion.ufro.cl/programa-de-incentivo-a-la-productividad-cientifica/',
+    'https://investigacion.ufro.cl/concurso-incentivo-a-los-articulos-mas-citados/'
+]
 
 function obtenerDatos(urls) {
     return new Promise(async (resolve, reject) => {
@@ -82,14 +83,10 @@ function obtenerDatos(urls) {
 }
 
 function run() {
-    readLines('scripts/investigacion/oferta_de_proyectos_urls.txt')
-        .then(urls => {
-            obtenerDatos(urls).then(datos => {
-                console.log('escribiendo datos a sistema')
-                escribirJSON(config.investigacion_data_folder + '/proyectos.json', datos)
-            })
-        })
-        .catch(err => console.error(err))
+    obtenerDatos(urls).then(datos => {
+        console.log('escribiendo datos a sistema')
+        escribirJSON(config.investigacion_data_folder + '/concursos.json', datos)
+    })
 }
 
 run()

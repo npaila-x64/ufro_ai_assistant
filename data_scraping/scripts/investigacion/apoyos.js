@@ -1,17 +1,29 @@
 const puppeteer = require('puppeteer')
-const FileSystem = require('fs')
+const fs = require('fs')
 const config = require('../config')
-const { readLines } = require('./readLines')
-
-function sleep(ms) {    
-    return new Promise(resolve => setTimeout(resolve, ms))
-}
 
 function escribirJSON(filename, data) {
-    FileSystem.writeFileSync(filename, JSON.stringify(data))
+    fs.writeFileSync(filename, JSON.stringify(data))
 }
 
-function obtenerDatos(urls) {
+let rawdata = fs.readFileSync(config.investigacion_data_folder + '/apoyos.json')
+let apoyos = JSON.parse(rawdata)
+
+let contextos = []
+
+for (let categoria of apoyos) {
+    for (let apoyo of categoria.apoyos) {
+        let contexto = {
+            tipo_apoyo: categoria.tipo_apoyo,
+            motivo: categoria.descripcion,
+            url: apoyo.url,
+            estado: apoyo.estado
+        } 
+        contextos.push(contexto)
+    }
+}
+
+function obtenerDatos(contextos) {
     return new Promise(async (resolve, reject) => {
         try {
             const browser = await puppeteer.launch({headless: 'new'})
@@ -19,9 +31,9 @@ function obtenerDatos(urls) {
 
             let results = []
 
-            for (let url of urls) {
-                console.log(`scrapeando url [${results.length + 1}/${urls.length}]: ${url}`)
-                await page.goto(url, {waitUntil: 'load', timeout: 90000})
+            for (let contexto of contextos) {
+                console.log(`scrapeando url [${results.length + 1}/${contextos.length}]: ${contexto.url}`)
+                await page.goto(contexto.url, {waitUntil: 'load', timeout: 90000})
                 let script = await page.evaluate(() => {
 
                     let descripcion = ''
@@ -70,7 +82,11 @@ function obtenerDatos(urls) {
                     
                     return data
                 })
-                results.push(script)
+                let data = script
+                data.estado = contexto.estado
+                data.tipo_apoyo = contexto.tipo_apoyo
+                data.motivo = contexto.motivo
+                results.push(data)
             }
             
             browser.close()
@@ -82,14 +98,10 @@ function obtenerDatos(urls) {
 }
 
 function run() {
-    readLines('scripts/investigacion/oferta_de_proyectos_urls.txt')
-        .then(urls => {
-            obtenerDatos(urls).then(datos => {
-                console.log('escribiendo datos a sistema')
-                escribirJSON(config.investigacion_data_folder + '/proyectos.json', datos)
-            })
-        })
-        .catch(err => console.error(err))
+    obtenerDatos(contextos).then(datos => {
+        console.log('escribiendo datos a sistema')
+        escribirJSON(config.investigacion_data_folder + '/apoyos.json', datos)
+    })
 }
 
 run()

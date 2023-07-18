@@ -1,0 +1,44 @@
+La siguiente información corresponde al equipo de profesionales que componen la Dirección de Investigación de la Universidad de La Frontera
+
+nombre: Dra. María Elena Arias Cea
+rol: Directora de Investigación
+profesion: BioquímicoDoctora en Ciencias mención Biología Celular y Molecular Aplicada
+telefono: 56 45 2325095
+correo: mariaelena.arias@ufrontera.cl
+
+nombre: Aracely Saavedra Muñoz
+rol: Secretaria Dirección de Investigación
+profesion: Técnico en Secretariado Ejecutivo
+telefono: 56 45 2325096
+correo: aracely.saavedra@ufrontera.cl
+
+nombre: Ing. Evelyn Velásquez Parra
+rol: Gestión y Administración Financiera
+profesion: Ingeniera Comercial con mención en Administración
+telefono: 56 45 2596650
+correo: evelyn.velasquez@ufrontera.cl
+
+nombre: Ing. Claudia Martínez Valdebenito
+rol: Gestión de Datos y Publicaciones
+profesion: Ingeniera Civil en Biotecnología
+telefono: 56 45 2596954
+correo: claudia.martinez@ufrontera.cl
+
+nombre: Ing. Cynthia Riquelme Aguilera
+rol: Gestión de Proyectos
+profesion: Ingeniera Civil Industrial mención Bioprocesos
+telefono: 56 45 2596328
+correo: cynthia.riquelme@ufrontera.cl
+
+nombre: Fabiola Belén Figueroa Zúñiga
+rol: Profesional de Apoyo Gestión Financiera de Proyectos
+profesion: Ingeniera Comercial
+telefono: 56 45 2596788
+correo: fabiolabelen.figueroa@ufrontera.cl
+
+nombre: Mg. Macarena Teillier Parra
+rol: Gestión de Apoyos y Calidad
+profesion: Ingeniera Civil Industrial mención Bioprocesos
+telefono: 56 45 2596339
+correo: macarena.teillier@ufrontera.cl
+

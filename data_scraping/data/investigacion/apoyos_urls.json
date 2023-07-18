@@ -1,0 +1,60 @@
+[
+    {
+        "tipo_apoyo": "FORTALECIMIENTODE INVESTIGACIÓN",
+        "descripcion": "Fortalecer las actividades de investigación al interior de la Universidad de La Frontera.",
+        "apoyos": [
+            {
+                "estado": "CONCURSABLE",
+                "titulo": "PAGO TASAS DE PUBLICACIÓN EN REVISTAS WOS/SCOPUS",
+                "url": "https://investigacion.ufro.cl/wos-apoyo-pago-tasas-de-publicacion-en-revistas-wos/"
+            },
+            {
+                "estado": "CONCURSABLE",
+                "titulo": "GRUPOS DE INVESTIGACIÓN PARA FORTALECER LA PRODUCTIVIDAD en revistas WoS (ex GAP)",
+                "url": "https://investigacion.ufro.cl/grupos-de-investigacion-para-fortalecer-la-productividad-en-revistas-wos/"
+            },
+            {
+                "estado": "CONCURSABLE",
+                "titulo": "EQUIPAMIENTO COMPLEMENTARIO A PROYECTOS FONDECYT Y DIUFRO\n",
+                "url": "https://investigacion.ufro.cl/equipamiento-complementario-a-proyectos-fondecyt-y-diufro/"
+            },
+            {
+                "estado": "NO CONCURSABLE",
+                "titulo": "EDICIÓN, TRADUCCIÓN O REVISIÓN DE ARTÍCULOS CIENTÍFICOS\n",
+                "url": "https://investigacion.ufro.cl/programa-edicion-traduccion-o-revision-de-articulos-cientificos/"
+            },
+            {
+                "estado": "CONCURSABLE",
+                "titulo": "POSTULANTES A FONDECYT\n",
+                "url": "https://investigacion.ufro.cl/programa-de-apoyo-a-postulantes-a-fondecyt/"
+            },
+            {
+                "estado": "NO CONCURSABLE",
+                "titulo": "INSCRIPCIÓN DE PROYECTOS EXTERNOS EN LA DIRECCIÓN DE INVESTIGACIÓN",
+                "url": "https://investigacion.ufro.cl/inscripcion-de-proyectos-externos-en-la-direccion-de-investigacion/"
+            }
+        ]
+    },
+    {
+        "tipo_apoyo": "NUEVOS/ASINVESTIGADORES/AS",
+        "descripcion": "Potenciar las actividades de investigación en líneas temáticas nuevas y desarrollar actividades de investigación que permitan la incorporación en la Universidad de nuevos/as investigadores/as.",
+        "apoyos": [
+            {
+                "estado": "CONCURSABLE",
+                "titulo": "TESIS DOCTORAL",
+                "url": "https://investigacion.ufro.cl/programa-de-apoyo-a-tesis-docto/"
+            }
+        ]
+    },
+    {
+        "tipo_apoyo": "INVESTIGACIÓN\nFORMATIVA",
+        "descripcion": "Desarrollar actividades de investigación científica conducentes a construir nuevo conocimiento para mejorar la docencia de pregrado y el aporte de esta para la consecución del perfil de egreso de los alumnos de la Universidad de La Frontera.",
+        "apoyos": [
+            {
+                "estado": "CONCURSABLE",
+                "titulo": "Profesores Patrocinantes de Estudiantes de Pre y Postgrado",
+                "url": "https://investigacion.ufro.cl/apoyo-a-profesores-patrocinantes-de-alumnos-de-pre-y-postgradoconvocatoria-2022/"
+            }
+        ]
+    }
+]
